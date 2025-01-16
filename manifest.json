@@ -1,0 +1,12 @@
+﻿{
+	"name": "InfestorFix",
+	"authorName": "Gorakh",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/Goorakh/RoR2_InfestorFix",
+	"description": "Fixes Void Infestors flying in seemingly random directions when opening Void Cradles. Serverside and Vanilla compatible.",
+	"dependencies": [
+		"bbepis-BepInExPack-5.4.2117",
+		"RiskofThunder-HookGenPatcher-1.2.5",
+		"RiskofThunder-R2API_Core-5.1.5"
+	]
+}
