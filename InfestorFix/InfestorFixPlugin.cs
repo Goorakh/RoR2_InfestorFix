@@ -1,6 +1,9 @@
 using BepInEx;
+using InfestorFix.Utilities.Extensions;
 using RoR2;
 using System.Diagnostics;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace InfestorFix
 {
@@ -26,6 +29,17 @@ namespace InfestorFix
 
             On.RoR2.LayerIndex.GetAppropriateLayerForTeam += LayerIndex_GetAppropriateLayerForTeam;
             On.RoR2.CharacterMotor.ApplyForceImpulse += CharacterMotor_ApplyForceImpulse;
+
+            Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/VoidInfestorBody.prefab").CallOnSuccess(voidInfestorBody =>
+            {
+                TrailRenderer[] trailRenderers = voidInfestorBody.GetComponentsInChildren<TrailRenderer>(true);
+                if (trailRenderers.Length > 0)
+                {
+                    DelayTrailRendererStart delayTrailRendererStart = voidInfestorBody.AddComponent<DelayTrailRendererStart>();
+                    delayTrailRendererStart.Delay = 1f / 30f;
+                    delayTrailRendererStart.TrailRenderers = trailRenderers;
+                }
+            });
 
             stopwatch.Stop();
             Log.Message_NoCallerPrefix($"Initialized in {stopwatch.Elapsed.TotalMilliseconds:F0}ms");
