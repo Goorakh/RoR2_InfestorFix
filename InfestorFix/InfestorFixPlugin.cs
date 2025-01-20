@@ -14,7 +14,7 @@ namespace InfestorFix
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Gorakh";
         public const string PluginName = "InfestorFix";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
 
         static InfestorFixPlugin _instance;
         internal static InfestorFixPlugin Instance => _instance;
